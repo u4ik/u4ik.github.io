@@ -76,7 +76,7 @@ const Header = ({ aboutRef }: HeaderProps) => {
           value: "#000000",
           // value: "#ffffff",
         },
-        opacity: 0.9, // Adjust this value to control the darkness of the background
+        opacity: 0.7, // Adjust this value to control the darkness of the background
       },
     },
     // background: {
@@ -176,7 +176,7 @@ const Header = ({ aboutRef }: HeaderProps) => {
         position: "relative",
         height: "100dvh",
         width: "100vw",
-        overflow: "hidden",
+        overflow: "clip",
       }}
     >
       <Particles
@@ -256,8 +256,10 @@ const Header = ({ aboutRef }: HeaderProps) => {
           {/* <Icon className="name-title_scroll-icon " size="large" name="arrow alternate circle down outline" onClick={() => scrollToBottom()} /> */}
 
           <FaArrowCircleDown
-            className="name-title_scroll-icon "
-            size={20}
+            className="name-title_scroll-icon relative  z-20"
+            size={25}
+            color=""
+            style={{filter : 'invert(1)'}}
             onClick={() => scrollToRef()}
           />
         </motion.div>

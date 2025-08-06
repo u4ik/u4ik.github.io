@@ -22,8 +22,10 @@ const Home = () => {
     // console.log("Scroll Progress: ", latest);
   });
 
-  const scale = useTransform(scrollYProgress, [0, 1.2], ["100%", "0%"]);
-  const slideDown = useTransform(scrollYProgress, [0.5, 1], ["0%", "100%"]);
+  const scale = useTransform(scrollYProgress, [0, 1.2], ["1", "1.6"]);
+  const slideDown = useTransform(scrollYProgress, [0.5, .8], ["0%", "100%"]);
+  const slideUp = useTransform(scrollYProgress, [0.4, .6], ["0%", "-100%"]);
+  
   const opacity = useTransform(scrollYProgress, [0, 0.8], ["1", "0"]);
   const tileTexts = [
     "HTML",
@@ -71,7 +73,12 @@ const Home = () => {
   return (
     <>
       <motion.div
-        style={{ scale: scale, opacity: opacity, translateY: slideDown }}
+        style={{ scale: scale, opacity: opacity, 
+          
+          // translateY: slideDown
+          translateY: slideUp 
+
+         }}
         className="home-container"
       >
         <Header aboutRef={aboutRef} />
