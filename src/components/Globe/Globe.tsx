@@ -61,6 +61,9 @@ export default function Globe({ location }: GlobeProps) {
     const z = radius * Math.sin(phi) * Math.sin(theta);
     return [x, y, z] as [number, number, number];
   }
+
+  const isMobile = window.innerWidth < 768;
+
   useEffect(() => {
     if (
       location
@@ -75,6 +78,8 @@ export default function Globe({ location }: GlobeProps) {
       // birmingham, uk
       // let lat = 52.489471;
       // let lon = -1.898575;
+
+      
       const { lat, lon } = location;
       const [x, y, z] = latLonToCartesian(lat, lon, 1);
       //   console.log(`Pin position: x=${x}, y=${y}, z=${z}`);
@@ -82,14 +87,20 @@ export default function Globe({ location }: GlobeProps) {
       setPinPosition(latLonToCartesian(lat, lon, 1));
     }
   }, [location]);
+
+
+  
+
   return (
     <Canvas
       style={{ width: "100vw", height: "100dvh" }}
-      camera={{ position: [0, 2, 1.5], fov: 50 }} // <--- move camera closer (z=2.5 or even 2)
+      // camera={{ position: [0, 0, 0], fov: 90 }} // <--- move camera closer (z=2.5 or even 2)
+      // camera={{ position: [0, 2, 5.5], fov: 40 }} // <--- move camera closer (z=2.5 or even 2)
+      //  camera={{ position: [0, 3, 5.5], fov: 40 }} //
     >
       <ambientLight intensity={0.2} />
       <AnimatedLight />
-      <mesh position={[0, 0, 0]}>
+      <mesh position={[0, 1.9, 0]}>
         <sphereGeometry args={[1, 64, 64]} />
         <meshStandardMaterial
           map={texture}
@@ -99,16 +110,16 @@ export default function Globe({ location }: GlobeProps) {
         />
       </mesh>
       {/* Static pinpoint */}
-      <mesh position={[pinPosition[0], pinPosition[1], pinPosition[2]]}>
+      <mesh position={[pinPosition[0], pinPosition[1]+1.9, pinPosition[2]]}>
         <sphereGeometry args={[0.01, 8, 8]} />
         <meshStandardMaterial color="red" />
       </mesh>
       {/* Animated ping effect */}
-      <Ping position={[pinPosition[0], pinPosition[1], pinPosition[2]]} />
+      <Ping position={[pinPosition[0], pinPosition[1]+1.9, pinPosition[2]]} />
       {/* 3D Text under the pinpoint */}
       <Text
-        position={[pinPosition[0], pinPosition[1] + 0.13, pinPosition[2]]}
-        fontSize={0.03}
+        position={[pinPosition[0], pinPosition[1] +1.9 + 0.13, pinPosition[2]]}
+        fontSize={0.07}
         color="white"
         anchorX="center"
         anchorY="bottom"

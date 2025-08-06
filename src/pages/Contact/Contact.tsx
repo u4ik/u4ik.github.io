@@ -7,17 +7,17 @@ import Globe from "../../components/Globe/Globe";
 import { useEffect } from "react";
 import type { LocationType } from "../../types/LocationType";
 
-
 const Contact = () => {
   const [state, handleSubmit] = useForm("mdovgawe");
   const [location, setLocation] = useState<LocationType | null>(null);
   const [currentLocationTemp, setCurrentLocationTemp] = useState<number | null>(
     null
   );
+
+
   useEffect(() => {
     async function fetchLocation() {
       try {
-
         const locRes = await fetch(`https://ipinfo.io/json/`);
         const locData = await locRes.json();
         const [lat, lon] = locData.loc.split(",");
@@ -27,7 +27,7 @@ const Contact = () => {
         const weather = await weatherData.json();
         setCurrentLocationTemp(weather.current.temperature_2m);
         // console.log("Location Data: ", locData);
-        setLocation({lat,lon, region: locData.region, city: locData.city});
+        setLocation({ lat, lon, region: locData.region, city: locData.city });
       } catch (err) {
         console.error("Error fetching location:", err);
       }
@@ -38,6 +38,8 @@ const Contact = () => {
   return (
     <FadeInOnScroll>
       <Globe location={location} />
+
+ 
       {currentLocationTemp && (
         <motion.div
           initial={{ opacity: 0, y: -50 }}
@@ -49,7 +51,7 @@ const Contact = () => {
             duration: 0.5,
             delay: 1,
           }}
-          className="absolute flex justify-center items-center h-5 p-5 bg-black bg-opacity-10 top-[8em] left-1/2 -translate-x-1/2"
+          className="absolute flex justify-center items-center h-5 p-5 bg-black bg-opacity-10 top-[20em] left-1/2 -translate-x-1/2 rounded-sm"
         >
           <h1 className="text-white text-xs">
             How's the weather in {location?.city}, {location?.region}?{" "}
@@ -57,7 +59,7 @@ const Contact = () => {
           </h1>
         </motion.div>
       )}
-      <div className="contact-container bg-opacity-10 backdrop-blur-sm">
+      <div className="contact-container bg-opacity-10 backdrop-blur-sm mt-20">
         {state.succeeded ? (
           <h3>
             Thanks for your message! <br />

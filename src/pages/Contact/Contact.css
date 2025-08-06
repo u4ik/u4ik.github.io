@@ -29,8 +29,8 @@
 .contact-text {
     max-width: auto;
     min-width: 10em;
-    min-height: 10em;
-    max-height: 10em;
+    min-height: 8em;
+    max-height: 8em;
     resize: none;
 }
 
