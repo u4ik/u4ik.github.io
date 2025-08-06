@@ -1,5 +1,5 @@
-import { useEffect, useState, useRef } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import {  useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import { Home, Projects, Contact, Resume } from "./pages";
 import { Navbar, Sidebar } from "./components";
 

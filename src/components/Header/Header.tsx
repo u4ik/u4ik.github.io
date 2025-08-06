@@ -1,42 +1,42 @@
 import React, { useState, useEffect, useRef } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
-import { Banner } from "../Banner/Banner";
 import Cloud from "../../assets/cloud.png";
 import Background from "../../assets/landscapegrey.png";
-import skills from "../About/Skills_List";
-import { Badge, FadeInOnScroll } from "../";
-import aboutText from "../About/About_Text";
+// import skills from "../About/Skills_List";
+// import aboutText from "../About/About_Text";
 import { useScroll, useMotionValueEvent, motion } from "motion/react";
 import "./Header.css";
 
 import { FaArrowCircleDown } from "react-icons/fa";
-const Header = ({ aboutRef }) => {
+interface HeaderProps {
+  aboutRef: React.RefObject<HTMLDivElement | null>;
+}
+const Header = ({ aboutRef }: HeaderProps) => {
   const [init, setInit] = useState(false);
-  const [showBackground, setShowBackground] = useState(false);
-  const [showCloud, setShowCloud] = useState(false);
+
   const { scrollY, scrollYProgress } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     // console.log("Page scroll: ", latest);
   });
 
-  const scrollToBottom = () => {
-    aboutRef.current?.scrollIntoView({
-      block: "end",
-      behavior: "smooth",
-    });
-  };
 
-  function scrollToRef(ref, duration = 900) {
-    ref = aboutRef;
-    if (!ref.current) return;
-    const targetY = ref.current.getBoundingClientRect().top + window.scrollY;
+  // const scrollToBottom = () => {
+  //   aboutRef.current?.scrollIntoView({
+  //     block: "end",
+  //     behavior: "smooth",
+  //   });
+  // };
+
+  function scrollToRef(duration = 900) {
+    if (!aboutRef.current) return;
+    const targetY = aboutRef.current.getBoundingClientRect().top + window.scrollY;
     const startY = window.scrollY;
     const diff = targetY - startY;
-    let start;
+    let start: number;
 
-    function step(timestamp) {
+    function step(timestamp: number) {
       if (!start) start = timestamp;
       const time = timestamp - start;
       const percent = Math.min(time / duration, 1);
@@ -62,7 +62,7 @@ const Header = ({ aboutRef }) => {
       setInit(true);
     });
   }, []);
-  const particlesLoaded = async (container) => {
+  const particlesLoaded = async (container: any) => {
     console.log(container);
   };
 

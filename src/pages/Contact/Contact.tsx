@@ -5,10 +5,18 @@ import './Contact.css'
 import { motion } from 'motion/react';
 import Globe from '../../components/Globe/Globe2'
 import { useEffect } from 'react';
+type LocationType = {
+    city?: string;
+    regionName?: string;
+    lat?: number;
+    lon?: number;
+    [key: string]: unknown;
+};
+
 const Contact = () => {
     const [state, handleSubmit] = useForm('mdovgawe');
-    const [location, setLocation] = useState(null);
-    const [currentLocationTemp, setCurrentLocationTemp] = useState(null);
+    const [location, setLocation] = useState<LocationType | null>(null);
+    const [currentLocationTemp, setCurrentLocationTemp] = useState<number | null>(null);
     useEffect(() => {
         async function fetchLocation() {
             try {

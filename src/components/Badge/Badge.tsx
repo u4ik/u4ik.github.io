@@ -1,7 +1,19 @@
 import { FaNpm, FaGithub, FaLinkedin } from 'react-icons/fa';
 
 
-const Badge = ({ clickable = true, color, label, size = 'small', link = '', icon = '0', width = '8em', margin = '0', padding = '0', background = '' }) => {
+interface BadgeProps {
+  clickable?: boolean;
+  color?: string;
+  label?: string;
+  size?: string;
+  link?: string;
+  icon?: string | number;
+  width?: string;
+  margin?: string;
+  padding?: string;
+  background?: string;
+}
+const Badge = ({ clickable = true, color, label, size = 'small', link = '', icon = '0', width = '8em', margin = '0', padding = '0', background = '' }: BadgeProps) => {
 
 
 
@@ -25,7 +37,7 @@ const Badge = ({ clickable = true, color, label, size = 'small', link = '', icon
                     gap: '1em',
                     alignItems: 'center'
                 }}>
-                    {icon != 0 ?
+                    {icon !== '0' ?
                         renderIcon()
                         : null
                     }

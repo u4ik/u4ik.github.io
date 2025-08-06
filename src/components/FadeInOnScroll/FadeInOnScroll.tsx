@@ -1,6 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import './FadeInOnScroll.css'
-const FadeInOnScroll = ({ children }, delay = 0) => {
+import type { ReactNode } from 'react';
+interface FadeInOnScrollProps {
+  children: ReactNode;
+}
+const FadeInOnScroll = ({ children }: FadeInOnScrollProps, delay = 0) => {
     const targetRef = useRef(null);
     const observer = useRef(
         new IntersectionObserver(

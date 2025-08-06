@@ -16,7 +16,6 @@ const Projects = () => {
             <div className="project-container" >
 
                 <motion.h1
-                    key={location.key}
                     animate={{ opacity: 1, y: 0 }}
                     initial={{ opacity: 0, y: 50 }}
                     transition={{ type: "spring", stiffness: 120, damping: 12, duration: 0.5 }}

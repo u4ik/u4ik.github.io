@@ -3,15 +3,31 @@ import React from "react";
 import { Badge } from "../index";
 import "./Item.css";
 
+type NpmInfo = {
+  img1: string;
+  img2: string;
+  link?: string;
+};
+
+interface ItemProps {
+  image: string;
+  github?: string;
+  header?: string;
+  description?: string;
+  additional?: string;
+  npm?: NpmInfo | string;
+  viewLink?: string;
+}
+
 function Item({
   image,
   github = "",
   header = "default header",
   description = "default",
   additional = "",
-  npm = "",
+  npm,
   viewLink = "",
-}) {
+}: ItemProps) {
   return (
     <div className="item-container" style={{ margin: "10%" }}>
       <div
@@ -42,7 +58,7 @@ function Item({
           {description}
         </div>
         {additional && <div className="item-additional mt-2">{additional}</div>}
-        {npm && npm.img1 && npm.img2 && (
+        {typeof npm === 'object' && npm !== null && 'img1' in npm && 'img2' in npm && (
           <div
             style={{
               display: "flex",
@@ -53,7 +69,7 @@ function Item({
             }}
           >
             <img
-              src={npm.img1}
+               src={typeof npm === 'object' && npm !== null && 'img1' in npm ? npm.img1 : ''}
               alt="npm1"
               style={{
                 // width: "7em",
@@ -65,7 +81,7 @@ function Item({
               }}
             />
             <img
-              src={npm.img2}
+               src={typeof npm === 'object' && npm !== null && 'img2' in npm ? npm.img2 : ''}
               alt="npm2"
               style={{
                 // width: "7em",
@@ -110,7 +126,7 @@ function Item({
               margin=".1em 1em .1em 1em"
               width="3em"
               padding="0.2em"
-              link={npm.link}
+              link={typeof npm === 'object' && npm !== null && 'link' in npm ? npm.link as string : undefined}
             />
           )}
           {viewLink && (

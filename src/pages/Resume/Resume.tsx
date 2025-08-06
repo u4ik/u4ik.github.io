@@ -1,19 +1,19 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { ConfirmModal, Resume_C } from "../../components";
+// import { ConfirmModal, Resume_C } from "../../components";
 import { motion } from "motion/react"
 import ResId from "./Resume_Helper";
 
 const Resume = () => {
   //   <Resume_C />;
-  const handleDownload = (option) => {
-    window.open(
-      option === "download"
-        ? `https://drive.google.com/uc?export=download&id=${ResId}`
-        : `https://drive.google.com/file/d/${ResId}/view`,
-      option === "download" ? "" : "_blank"
-    );
-  };
+  // const handleDownload = (option) => {
+  //   window.open(
+  //     option === "download"
+  //       ? `https://drive.google.com/uc?export=download&id=${ResId}`
+  //       : `https://drive.google.com/file/d/${ResId}/view`,
+  //     option === "download" ? "" : "_blank"
+  //   );
+  // };
   return (
     <>
 

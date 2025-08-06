@@ -5,7 +5,7 @@ import "./Home.css";
 import Header from "../../components/Header/Header";
 import Banner from "../../components/Banner/Banner";
 import About from "../../components/About/About";
-import {Education} from "../../components/";
+import { Education } from "../../components";
 import {
   useMotionValueEvent,
   useScroll,

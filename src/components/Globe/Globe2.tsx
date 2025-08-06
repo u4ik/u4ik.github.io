@@ -30,7 +30,10 @@ function latLonToCartesian(lat: number, lon: number, radius: number) {
   const z = radius * Math.sin(phi) * Math.sin(theta);
   return [x, y, z] as [number, number, number];
 }
-export default function Globe({ location }) {
+interface GlobeProps {
+  location: any;
+}
+export default function Globe({ location }: GlobeProps) {
   const [pinPosition, setPinPosition] = useState([0, 0, 0]);
 
   const texture = useLoader(TextureLoader, EarthTexture);
