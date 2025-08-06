@@ -34,7 +34,7 @@ const About = forwardRef<HTMLDivElement>((props, ref) => {
       <div className="about_skills-container" ref={localRef} style={{paddingBottom:"1em"}}>
         <div className="about-wrapper">
           <FadeInOnScroll>
-            <div className="flex justify-start items-center  gap-4">
+            <div className="flex justify-start items-center gap-4">
               {/* <motion.img
 
                 src={AboutImg}
@@ -45,17 +45,17 @@ const About = forwardRef<HTMLDivElement>((props, ref) => {
                 style={{ rotate, x, opacity }}
                 src={AboutImg}
                 alt="About Image"
-                className="w-40 flex-shrink-0 "
+                className="w-20 flex-shrink-0 "
               />
               <motion.h1
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ type: "spring", stiffness: 120, damping: 12 }}
-                className="flex-1 text-3xl font-bold"
+                className="flex-1 text-3xl font-bold w-40"
               >
                 About Me
               </motion.h1>
-              <div className="flex-shrink-0 w-40"></div>
+              <div className="flex-shrink-0 w-20"></div>
             </div>
 
             <p style={{ fontSize: "1.2em" }}>

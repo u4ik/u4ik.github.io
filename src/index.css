@@ -13,14 +13,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 html, body {
-  min-width: 462px !important;
-  overflow-x: auto;
+  /* min-width: 462px !important; */
+  overflow-x: hidden;
 }
 
 .App{
   background: black;
   overflow-x: hidden;
-  min-width: 462px !important;
+  /* min-width: 462px !important; */
 }
 
 @import "tailwindcss";

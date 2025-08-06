@@ -54,7 +54,7 @@ const Education = () => {
         <div className="about-wrapper">
           <FadeInOnScroll>
             <div className="flex justify-start items-center gap-4">
-              <div className="flex-shrink-0 w-40"></div>
+              <div className="flex-shrink-0 w-20"></div>
               <motion.h1
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -67,7 +67,7 @@ const Education = () => {
                 style={{ rotate, x, opacity }}
                 src={EducationImg}
                 alt="Education Image"
-                className="w-40 flex-shrink-0"
+                className="w-20 flex-shrink-0"
               />
             </div>
             <p style={{ fontSize: "1.2em" }}>
