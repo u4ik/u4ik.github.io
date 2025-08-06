@@ -1,5 +1,6 @@
 // import { FadeInOnScroll, Header } from "../../components";
 
+import { useRef, lazy } from "react";
 import "./Home.css";
 
 import Header from "../../components/Header/Header";
@@ -12,7 +13,6 @@ import {
   useTransform,
   motion,
 } from "motion/react";
-import { useRef, lazy } from "react";
 
 const Home = () => {
   const { scrollYProgress } = useScroll();
