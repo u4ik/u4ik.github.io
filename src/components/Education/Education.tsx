@@ -49,7 +49,7 @@ const Education = () => {
   ];
 
   return (
-    <div className="about_skills-overlay">
+    <div className="about_skills-overlay" style={{paddingBottom: "5em"}}>
       <div className="about_skills-container" ref={localRef}>
         <div className="about-wrapper">
           <FadeInOnScroll>
