@@ -1,0 +1,31 @@
+.sidebar-container {
+    height: fit-content;
+    position: fixed;
+    padding: 0.4em;
+    /* right: -0.175em; */
+    right: 0em;
+    bottom: 0;
+    border-top: .1em solid rgba(255,255,255,.7);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, 0);
+    border: 0.1em 0em 0.1em 0.1em solid rgba(255, 255, 255, 0.3);
+    /* border-radius: 0.5em 0 0 0.5em; */
+    /* background-color: rgba(0, 0, 0, 0.1); */
+    background-color: black;
+    /* background-color: red; */
+    backdrop-filter: blur(10px);
+    /* backdrop-filter: grayscale(1); */
+    z-index: 10;
+    width: 100%;
+    box-shadow: 0.4em 0.4em 0.9em black;
+    font-family: "Quicksand", sans-serif;
+}
+
+
+
+
+/* @media only screen and (max-width: 450px) {
+    .sidebar-container {
+        margin-right: 1px !important;
+    }
+} */

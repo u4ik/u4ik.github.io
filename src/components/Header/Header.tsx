@@ -1,0 +1,240 @@
+import React, { useState, useEffect, useRef } from "react";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
+import { Banner } from "../Banner/Banner";
+import Cloud from "../../assets/cloud.png";
+import Background from "../../assets/landscapegrey.png";
+import skills from "../About/Skills_List";
+import { Badge, FadeInOnScroll } from "../";
+import aboutText from "../About/About_Text";
+import { useScroll, useMotionValueEvent, motion } from "motion/react";
+import "./Header.css";
+
+import { FaArrowCircleDown } from "react-icons/fa";
+const Header = ({aboutRef}) => {
+  const [init, setInit] = useState(false);
+  const [showBackground, setShowBackground] = useState(false);
+  const [showCloud, setShowCloud] = useState(false);
+  const { scrollY, scrollYProgress } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    // console.log("Page scroll: ", latest);
+  });
+
+  const scrollToBottom = () => {
+    aboutRef.current?.scrollIntoView({
+      block: "end",
+      behavior: "smooth",
+    });
+  };
+
+  // this should be run only once per application lifetime
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
+      // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
+      // starting from v2 you can add only the features you need reducing the bundle size
+      //await loadAll(engine);
+      //await loadFull(engine);
+      await loadSlim(engine);
+      //await loadBasic(engine);
+    }).then(() => {
+      setInit(true);
+    });
+  }, []);
+  const particlesLoaded = async (container) => {
+    console.log(container);
+  };
+
+
+  const options = {
+    key: "linkTriangles",
+    name: "Link Triangles",
+    backgroundMask: {
+      enable: true,
+      cover: {
+        color: {
+          value: "#000000",
+          // value: "#ffffff",
+        },
+        opacity: 0.9, // Adjust this value to control the darkness of the background
+      },
+    },
+    // background: {
+    //   color: {
+    //     // img: `url(${Background})`,
+    //     value:"#000000"
+    //   },
+    // },
+    particles: {
+      number: {
+        value: 80,
+        density: {
+          enable: true,
+        },
+      },
+      color: {
+        value: "#000000",
+      },
+      shape: {
+        type: "circle",
+      },
+      opacity: {
+        value: 0,
+      },
+      size: {
+        value: {
+          min: 1,
+          max: 5,
+        },
+      },
+      links: {
+        enable: true,
+        distance: 200,
+        color: "#000000",
+        opacity: 0,
+        width: 1,
+        triangles: {
+          enable: true,
+          color: "#ffffff",
+          opacity: 0.1,
+        },
+      },
+      move: {
+        enable: true,
+        speed: 0.5,
+      },
+    },
+    interactivity: {
+      events: {
+        onHover: {
+          enable: true,
+          mode: "grab",
+        },
+        onClick: {
+          enable: true,
+          mode: "push",
+        },
+      },
+      modes: {
+        grab: {
+          distance: 100,
+          links: {
+            opacity: 1,
+          },
+        },
+        bubble: {
+          distance: 400,
+          size: 40,
+          duration: 2,
+          opacity: 0.8,
+        },
+        repulse: {
+          distance: 200,
+        },
+        push: {
+          quantity: 4,
+        },
+        remove: {
+          quantity: 2,
+        },
+      },
+    },
+  };
+
+  return (
+    <header
+      className="header-wrapper"
+      style={{
+        backgroundImage: `url(${Background})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        position: "relative",
+        height: "100dvh",
+        width: "100vw",
+        overflow: "hidden",
+      }}
+    >
+      <Particles
+        id="tsparticles"
+        className="header-particles"
+        particlesLoaded={particlesLoaded}
+        options={options}
+        style={{
+          // This is the key CSS to add.
+          // It will blend the particles canvas with the background image of the header.
+          mixBlendMode: "screen",
+        }}
+      />
+      {/* Cloud */}
+
+      <motion.img
+        initial={{ opacity: 0, scale: 2, translateY: "0%" }}
+        animate={{
+          opacity: [1, 0.8, 1, 0.5, 1, 0.2, 1],
+          scale: [3, 4, 3],
+          translateY: ["0%", "13%", "0%", "14%"],
+        }}
+        transition={{
+          duration: 25,
+          ease: "easeInOut",
+          repeat: Infinity,
+          repeatType: "reverse",
+        }}
+        src={Cloud}
+        alt=""
+        className="z-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+      />
+
+      {/* NAME + TITLE */}
+      {/* <FadeInOnScroll> */}
+      <div className="name-title_wrapper relative z-1">
+        <motion.h1
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{
+            duration: 3,
+            ease: "easeInOut",
+          }}
+          className="name"
+          style={{ marginInline: ".3em" }}
+        >
+          Amit Mangat
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{
+            duration: 3,
+            ease: "easeInOut",
+            delay: 0.5,
+          }}
+          className="title"
+          style={{ margin: "0", color: "white" }}
+        >
+          [ Software Developer ]
+        </motion.p>
+
+        <div className="name-title_scroll-button">
+          {/* <Icon className="name-title_scroll-icon " size="large" name="arrow alternate circle down outline" onClick={() => scrollToBottom()} /> */}
+
+          <FaArrowCircleDown
+            className="name-title_scroll-icon "
+            size={40}
+            onClick={() => scrollToBottom()}
+          />
+        </div>
+      </div>
+      {/* </FadeInOnScroll> */}
+    </header>
+
+    // </div>
+    // </div>
+  );
+};
+
+export default Header;

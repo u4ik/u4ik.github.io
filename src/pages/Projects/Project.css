@@ -1,0 +1,44 @@
+.project-container {
+    /* border: solid rgba(255, 255, 255, 0.3) 0.1em; */
+    border-radius: 1em;
+    margin-inline: auto;
+    width: 100%;
+    max-width: 100vw;
+    min-width: 100vw;
+    margin-top: 4em;
+    margin-bottom: 2em;
+    color: white;
+    padding: 1em;
+    font-family: "Quicksand", sans-serif;
+}
+
+.header {
+    color: white !important;
+}
+
+.extra {
+    color: grey !important;
+}
+
+.meta {
+    color: white !important;
+}
+
+
+/* img {
+  margin: none;
+} */
+
+.ui.small.image {
+    width: auto !important;
+}
+
+.ui.big.image {
+    max-width: 20em;
+    /* border-radius: 50em; */
+}
+
+.ui.items>.item>.image {
+    /* position: relative; */
+    flex: 1 0 auto !important;
+}

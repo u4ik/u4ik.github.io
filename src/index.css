@@ -1,0 +1,114 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+html, body {
+  min-width: 462px !important;
+  overflow-x: auto;
+}
+
+.App{
+  background: black;
+  min-width: 462px !important;
+}
+
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: all;
+}
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: false;
+  prefersdark: false;
+  color-scheme: "light";
+  /* --color-primary-content: oklch(98% 0.01 270); */
+  --color-primary-content: oklch(98% 0.01 270);
+  --color-primary: #1A1222; 
+
+   --color-base-100: oklch(98% 0.005 280); /* Very light, nearly white */
+  --color-base-200: oklch(94% 0.007 280); /* Light gray */
+  --color-base-300: oklch(88% 0.01 280); /* Mid-light gray */
+  --color-base-content: oklch(20% 0.01 280); /* Deep slate for readability */
+
+  /* --color-primary-content: white; */
+  --color-secondary: oklch(80% 0.24 50); /* Warm orange */
+  --color-secondary-content: oklch(15% 0.05 60);
+  /* --color-accent: oklch(85% 0.15 310); Soft violet-magenta */
+  --color-accent: oklch(75% 0.25 260);
+  --color-accent-content: oklch(20% 0.05 310);
+  --color-neutral: oklch(20% 0.03 280); /* Near-black with purple undertone */
+  --color-neutral-content: oklch(92% 0.01 280); /* Soft white text */
+  --color-info: oklch(72% 0.2 240); /* Cool blue for alerts */
+  --color-info-content: oklch(20% 0.06 240);
+  --color-success: oklch(70% 0.18 160); /* Fresh green */
+  --color-success-content: oklch(25% 0.04 160);
+  --color-warning: oklch(85% 0.21 90); /* Bright yellow-orange */
+  --color-warning-content: oklch(28% 0.08 90);
+  --color-error: oklch(60% 0.24 25); /* Reddish */
+  --color-error-content: oklch(95% 0.01 25); /* White text */
+  --radius-selector: .7rem;
+  --radius-field: .7rem;
+  --radius-box: .7rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 2px;
+  --depth: 2;
+  --noise: 0;
+
+   --toastify-color-progress-light: var(--color-base-content);
+
+}
+
+@plugin "daisyui/theme" {
+  name: "dark";
+  default: false;
+  prefersdark: true;
+  color-scheme: "dark";
+  
+  --toastify-color-light: oklch(12% 0.02 280);
+  --color-base-100: oklch(15% 0.02 280); /* Dark background */
+  --color-base-200: oklch(12% 0.02 280); /* Darker background for cards */
+  --color-base-300: oklch(10% 0.02 280); /* Darkest background for borders */
+  --color-base-content: oklch(95% 0.005 280); /* Light text for dark mode */
+  --color-primary-content: oklch(98% 0.01 270); /* Bright text on primary */
+  --color-primary: #1A1222; 
+  /* --color-primary-content: white; */
+  --color-secondary: oklch(80% 0.24 50); /* Warm orange */
+  --color-secondary-content: oklch(15% 0.05 60);
+  /* --color-accent: oklch(85% 0.15 310); Soft violet-magenta */
+  --color-accent: oklch(75% 0.25 260);
+  --color-accent-content: oklch(20% 0.05 310);
+  --color-neutral: oklch(20% 0.03 280); /* Near-black with purple undertone */
+  --color-neutral-content: oklch(92% 0.01 280); /* Soft white text */
+  --color-info: oklch(72% 0.2 240); /* Cool blue for alerts */
+  --color-info-content: oklch(20% 0.06 240);
+  --color-success: oklch(70% 0.18 160); /* Fresh green */
+  --color-success-content: oklch(25% 0.04 160);
+  --color-warning: oklch(85% 0.21 90); /* Bright yellow-orange */
+  --color-warning-content: oklch(28% 0.08 90);
+  --color-error: oklch(60% 0.24 25); /* Reddish */
+  --color-error-content: oklch(95% 0.01 25); /* White text */
+  --radius-selector: .7rem;
+  --radius-field: .7rem;
+  --radius-box: .7rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 2px;
+  --depth: 2;
+  --noise: 0;
+
+ 
+   --toastify-color-progress-light: var(--color-base-content);
+
+}
