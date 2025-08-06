@@ -23,7 +23,7 @@ const Contact = () => {
                 const ipRes = await fetch("https://api.ipify.org?format=json");
                 const ipData = await ipRes.json();
                 const ip = ipData.ip;
-                const locRes = await fetch(`http://ip-api.com/json/${ip}`);
+                const locRes = await fetch(`https://ip-api.com/json/${ip}`);
                 const locData = await locRes.json();
 
                 const weatherData = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${locData.lat}&longitude=${locData.lon}&current=temperature_2m&timeformat=unixtime&temperature_unit=fahrenheit&timezone=auto`);
@@ -41,6 +41,7 @@ const Contact = () => {
     return (
         <FadeInOnScroll>
             <Globe location={location} />
+            {currentLocationTemp &&
             <motion.div
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -48,6 +49,7 @@ const Contact = () => {
             className='absolute flex justify-center items-center h-5 p-5 bg-black bg-opacity-10 top-[8em] left-1/2 -translate-x-1/2'>
                 <h1 className='text-white text-xs'>How's the weather in {location?.city}, {location?.regionName}? {currentLocationTemp ? currentLocationTemp + "°F" : "Loading..."}</h1>
             </motion.div>
+            }
             <div className='contact-container '>
                 {
                     state.succeeded ? <h3>Thanks for your message! <br />You can rotate the globe by the way :)</h3> :
