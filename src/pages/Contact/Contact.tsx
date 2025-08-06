@@ -3,7 +3,7 @@ import { useForm, ValidationError } from "@formspree/react";
 import { FadeInOnScroll } from "../../components";
 import "./Contact.css";
 import { motion } from "motion/react";
-import Globe from "../../components/Globe/Globe2";
+import Globe from "../../components/Globe/Globe";
 import { useEffect } from "react";
 import type { LocationType } from "../../types/LocationType";
 
@@ -17,9 +17,7 @@ const Contact = () => {
   useEffect(() => {
     async function fetchLocation() {
       try {
-        // const ipRes = await fetch("https://api.ipify.org?format=json");
-        // const ipData = await ipRes.json();
-        // const ip = ipData.ip;
+
         const locRes = await fetch(`https://ipinfo.io/json/`);
         const locData = await locRes.json();
         const [lat, lon] = locData.loc.split(",");
