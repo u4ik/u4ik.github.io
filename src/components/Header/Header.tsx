@@ -162,7 +162,11 @@ const Header = ({ aboutRef }: HeaderProps) => {
   };
 
   return (
-    <header
+    <motion.header
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1 }}
       className="header-wrapper"
       style={{
         backgroundImage: `url(${Background})`,
@@ -259,7 +263,7 @@ const Header = ({ aboutRef }: HeaderProps) => {
         </motion.div>
       </div>
       {/* </FadeInOnScroll> */}
-    </header>
+    </motion.header>
 
     // </div>
     // </div>
