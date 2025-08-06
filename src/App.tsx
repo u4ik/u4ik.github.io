@@ -1,12 +1,13 @@
-import {  useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
-import { Home, Projects, Contact, Resume } from "./pages";
+import { Home, Projects, Resume } from "./pages";
 import { Navbar, Sidebar } from "./components";
+const Contact = lazy(() => import("./pages/Contact/Contact"));
 
 import "./App.css";
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  // const [darkMode, setDarkMode] = useState(false);
 
   // useEffect(() => {
   //   if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
@@ -17,13 +18,20 @@ function App() {
   // }, []);
 
   return (
-    <div className="App" data-theme={darkMode ? "dark" : "light"}>
+    <div className="App" 
+    // data-theme={darkMode ? "dark" : "light"}
+    data-theme={"dark"}
+    >
       <Navbar />
 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<Projects />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/contact" element={
+          <Suspense fallback={<div>Loading...</div>}>
+            <Contact />
+          </Suspense>
+        } />
         <Route path="/resume" element={<Resume />} />
       </Routes>
 
