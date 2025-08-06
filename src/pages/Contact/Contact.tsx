@@ -14,7 +14,6 @@ const Contact = () => {
     null
   );
 
-
   useEffect(() => {
     async function fetchLocation() {
       try {

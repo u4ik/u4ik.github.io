@@ -2,7 +2,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Stars, Text } from "@react-three/drei";
 import * as THREE from "three";
 import { useLoader } from "@react-three/fiber";
-import EarthTexture from "../../assets/earth.jpg"; // Adjust the path as necessary
+import EarthTexture from "../../assets/earth2.jpg"; // Adjust the path as necessary
 import { TextureLoader } from "three";
 import { useEffect, useRef, useState } from "react";
 // Animated ping mesh for the pinpoint
