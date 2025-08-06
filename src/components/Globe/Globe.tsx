@@ -3,6 +3,7 @@ import { OrbitControls, Stars, Text } from "@react-three/drei";
 import * as THREE from "three";
 import { useLoader } from "@react-three/fiber";
 import EarthTexture from "../../assets/earth2.jpg"; // Adjust the path as necessary
+import CloudTexture from "../../assets/cloud3.png"; // Add your transparent cloud texture here
 import { TextureLoader } from "three";
 import { useEffect, useRef, useState } from "react";
 // Animated ping mesh for the pinpoint
@@ -33,6 +34,28 @@ export default function Globe({ location }: GlobeProps) {
   const [pinPosition, setPinPosition] = useState([0, 0, 0]);
 
   const texture = useLoader(TextureLoader, EarthTexture);
+  const cloudTexture = useLoader(TextureLoader, CloudTexture);
+  // Cloud sphere animation
+  function Clouds() {
+    const meshRef = useRef<THREE.Mesh>(null);
+    useFrame(({ clock }) => {
+      if (meshRef.current) {
+        meshRef.current.rotation.y = clock.getElapsedTime() * 0.03; // Slow rotation
+      }
+    });
+    return (
+      <mesh ref={meshRef} position={[0, 1.9, 0]}>
+        <sphereGeometry args={[1.019, 64, 64]} />
+        <meshStandardMaterial
+          map={cloudTexture}
+          color={"white"}
+          transparent
+          opacity={0.5}
+          depthWrite={false}
+        />
+      </mesh>
+    );
+  }
   function AnimatedLight() {
     const lightRef = useRef<THREE.DirectionalLight>(null);
 
@@ -109,6 +132,8 @@ export default function Globe({ location }: GlobeProps) {
           roughness={0.7}
         />
       </mesh>
+      {/* Cloud sphere */}
+      <Clouds />
       {/* Static pinpoint */}
       <mesh position={[pinPosition[0], pinPosition[1]+1.9, pinPosition[2]]}>
         <sphereGeometry args={[0.01, 8, 8]} />
