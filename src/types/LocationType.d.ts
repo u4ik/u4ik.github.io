@@ -1,7 +1,7 @@
 export type LocationType = {
   city?: string;
   region?: string;
-  lat?: number;
-  lon?: number;
+  lat?: number | undefined;
+  lon?: number | undefined;
   [key: string]: unknown;
 };

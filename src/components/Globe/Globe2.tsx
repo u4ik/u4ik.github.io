@@ -13,7 +13,9 @@ function Ping({ position }: { position: [number, number, number] }) {
     const scale = 1 + 0.2 * Math.abs(Math.sin(t * 2)); // Pulsing scale
     if (meshRef.current) {
       meshRef.current.scale.set(scale, scale, scale);
-      meshRef.current.material.opacity = 0.5 + 0.1 * Math.abs(Math.cos(t * 2)); // Fade in/out
+      if (meshRef.current && meshRef.current.material && 'opacity' in meshRef.current.material) {
+        (meshRef.current.material as THREE.MeshStandardMaterial).opacity = 0.5 + 0.1 * Math.abs(Math.cos(t * 2)); // Fade in/out
+      }
     }
   });
   return (
@@ -48,7 +50,7 @@ export default function Globe({ location }: GlobeProps) {
 
     return <directionalLight ref={lightRef} intensity={5} />;
   }
-  function latLonToCartesian(lat: number, lon: number, radius: number) {
+  function latLonToCartesian(lat: number , lon: number, radius: number) {
     const phi = (90 - lat) * (Math.PI / 180);
     const theta = -lon * (Math.PI / 180);
     const x = radius * Math.sin(phi) * Math.cos(theta);
@@ -56,12 +58,13 @@ export default function Globe({ location }: GlobeProps) {
     const z = radius * Math.sin(phi) * Math.sin(theta);
     return [x, y, z] as [number, number, number];
   }
-
   useEffect(() => {
-    if (location) {
+    if (
+      location
+    ) {
       // new york, new york
-      //   let lat = 40.73061;
-      //   let lon = -73.935242;
+        // let lat = 40.73061;
+        // let lon = -73.935242;
 
       // california, la
       // let lat = 34.052235

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import Cloud from "../../assets/cloud.png";
-import Background from "../../assets/landscapegrey.png";
+import Background from "../../assets/landscapegrey_compressed.png";
 // import skills from "../About/Skills_List";
 // import aboutText from "../About/About_Text";
 import { useScroll, useMotionValueEvent, motion } from "motion/react";
