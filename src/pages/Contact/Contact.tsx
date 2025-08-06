@@ -50,7 +50,7 @@ const Contact = () => {
             duration: 0.5,
             delay: 1,
           }}
-          className="absolute flex justify-center items-center h-5 p-5 bg-black bg-opacity-10 top-[20em] left-1/2 -translate-x-1/2 rounded-sm"
+          className="absolute flex justify-center items-center h-5 p-5 bg-black bg-opacity-10 top-[35dvh] left-1/2 -translate-x-1/2 rounded-sm"
         >
           <h1 className="text-white text-xs">
             How's the weather in {location?.city}, {location?.region}?{" "}
