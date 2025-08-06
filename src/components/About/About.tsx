@@ -9,7 +9,7 @@ import {
   useTransform,
 } from "motion/react";
 
-import AboutImg from "../../assets/about.png";
+import AboutImg from "../../assets/about_compressed.png";
 // import AboutImg from "../../assets/about2.png";
 // import AboutImg from "../../assets/education.png";
 

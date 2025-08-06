@@ -50,7 +50,10 @@ export default function Globe({ location }: GlobeProps) {
 
     return <directionalLight ref={lightRef} intensity={5} />;
   }
-  function latLonToCartesian(lat: number , lon: number, radius: number) {
+  function latLonToCartesian(lat:number | undefined , lon:number | undefined, radius: number) {
+    if (lat === undefined || lon === undefined) {
+      return [0, 0, 0]; // Default position if lat/lon are not defined
+    }
     const phi = (90 - lat) * (Math.PI / 180);
     const theta = -lon * (Math.PI / 180);
     const x = radius * Math.sin(phi) * Math.cos(theta);

@@ -4,7 +4,7 @@ import "./Home.css";
 
 import Header from "../../components/Header/Header";
 import Banner from "../../components/Banner/Banner";
-import About from "../../components/About/About";
+const About = lazy(() => import("../../components/About/About"));
 import { Education } from "../../components";
 import {
   useMotionValueEvent,
@@ -12,7 +12,7 @@ import {
   useTransform,
   motion,
 } from "motion/react";
-import { useRef } from "react";
+import { useRef, lazy } from "react";
 
 const Home = () => {
   const { scrollYProgress } = useScroll();
