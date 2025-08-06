@@ -95,8 +95,8 @@ function Item({
               label=""
               icon="github"
               size="large"
-              margin=".1em .1em .1em .1em"
-              width="4em"
+              margin=".1em 1em .1em 1em"
+              width="2.3em"
               padding="0.2em"
               link={github}
             />
@@ -107,23 +107,24 @@ function Item({
               label=""
               icon="npm"
               size="large"
-              margin=".1em .1em .1em .1em"
-              width="4em"
+              margin=".1em 1em .1em 1em"
+              width="3em"
               padding="0.2em"
               link={npm.link}
             />
           )}
           {viewLink && (
-            <Badge
-              color="blue"
-              label="View"
-              icon=""
-              size="large"
-              margin=".1em .1em .1em .1em"
-              width="4em"
-              padding="0.24em"
-              link={viewLink}
-            />
+            <button className="btn btn-ghost outline-2" onClick={() => window.open(viewLink, "_blank")}>View</button>
+            // <Badge
+            //   color="blue"
+            //   label="View"
+            //   icon=""
+            //   size="large"
+            //   margin=".1em .1em .1em .1em"
+            //   width="4em"
+            //   padding="0.24em"
+            //   link={viewLink}
+            // />
           )}
         </div>
       </div>

@@ -5,6 +5,7 @@ import "./Home.css";
 import Header from "../../components/Header/Header";
 import Banner from "../../components/Banner/Banner";
 import About from "../../components/About/About";
+import {Education} from "../../components/";
 import {
   useMotionValueEvent,
   useScroll,
@@ -79,6 +80,8 @@ const Home = () => {
       <Banner tiles={tiles} speed={40000} />
       {/* </FadeInOnScroll> */}
       <About ref={aboutRef} />
+
+      <Education />
     </>
   );
 };

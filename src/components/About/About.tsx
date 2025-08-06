@@ -10,6 +10,8 @@ import {
 } from "motion/react";
 
 import AboutImg from "../../assets/about.png";
+// import AboutImg from "../../assets/about2.png";
+// import AboutImg from "../../assets/education.png";
 
 const About = forwardRef<HTMLDivElement>((props, ref) => {
   const localRef = useRef<HTMLDivElement>(null);
@@ -29,7 +31,7 @@ const About = forwardRef<HTMLDivElement>((props, ref) => {
 
   return (
     <div className="about_skills-overlay" ref={ref}>
-      <div className="about_skills-container" ref={localRef}>
+      <div className="about_skills-container" ref={localRef} style={{paddingBottom:"1em"}}>
         <div className="about-wrapper">
           <FadeInOnScroll>
             <div className="flex justify-start items-center  gap-4">
@@ -43,7 +45,7 @@ const About = forwardRef<HTMLDivElement>((props, ref) => {
                 style={{ rotate, x, opacity }}
                 src={AboutImg}
                 alt="About Image"
-                className="w-30 flex-shrink-0 "
+                className="w-40 flex-shrink-0 "
               />
               <motion.h1
                 initial={{ opacity: 0, y: 50 }}
@@ -53,7 +55,7 @@ const About = forwardRef<HTMLDivElement>((props, ref) => {
               >
                 About Me
               </motion.h1>
-              <div className="flex-shrink-0 w-30"></div>
+              <div className="flex-shrink-0 w-40"></div>
             </div>
 
             <p style={{ fontSize: "1.2em" }}>
@@ -69,7 +71,6 @@ const About = forwardRef<HTMLDivElement>((props, ref) => {
               creativity in unexpected ways. Feel free to check out my projects,
               and if you’ve got an idea you’d like to bring to life, I’d love to
               connect.
-              Cheers!
             </p>
           </FadeInOnScroll>
         </div>

@@ -6,14 +6,16 @@ import ConfirmModal from "./ConfirmModal/ConfirmModal";
 import Item from "./Item/Item";
 import FadeInOnScroll from "./FadeInOnScroll/FadeInOnScroll";
 import Resume_C from "./Resume_C/Resume_C";
+import Education from "./Education/Education";
 
 export {
   Navbar,
-  Badge,
+  Badge,  
   Header,
   ConfirmModal,
   Sidebar,
   Item,
   FadeInOnScroll,
   Resume_C,
+  Education
 };

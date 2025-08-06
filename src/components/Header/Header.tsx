@@ -11,7 +11,7 @@ import { useScroll, useMotionValueEvent, motion } from "motion/react";
 import "./Header.css";
 
 import { FaArrowCircleDown } from "react-icons/fa";
-const Header = ({aboutRef}) => {
+const Header = ({ aboutRef }) => {
   const [init, setInit] = useState(false);
   const [showBackground, setShowBackground] = useState(false);
   const [showCloud, setShowCloud] = useState(false);
@@ -27,6 +27,26 @@ const Header = ({aboutRef}) => {
       behavior: "smooth",
     });
   };
+
+  function scrollToRef(ref, duration = 900) {
+    ref = aboutRef;
+    if (!ref.current) return;
+    const targetY = ref.current.getBoundingClientRect().top + window.scrollY;
+    const startY = window.scrollY;
+    const diff = targetY - startY;
+    let start;
+
+    function step(timestamp) {
+      if (!start) start = timestamp;
+      const time = timestamp - start;
+      const percent = Math.min(time / duration, 1);
+      window.scrollTo(0, startY + diff * percent);
+      if (time < duration) {
+        requestAnimationFrame(step);
+      }
+    }
+    requestAnimationFrame(step);
+  }
 
   // this should be run only once per application lifetime
   useEffect(() => {
@@ -45,7 +65,6 @@ const Header = ({aboutRef}) => {
   const particlesLoaded = async (container) => {
     console.log(container);
   };
-
 
   const options = {
     key: "linkTriangles",
@@ -219,15 +238,25 @@ const Header = ({aboutRef}) => {
           [ Software Developer ]
         </motion.p>
 
-        <div className="name-title_scroll-button">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{
+            duration: 3,
+            ease: "easeInOut",
+            delay: 1,
+          }}
+          className="name-title_scroll-button"
+        >
           {/* <Icon className="name-title_scroll-icon " size="large" name="arrow alternate circle down outline" onClick={() => scrollToBottom()} /> */}
 
           <FaArrowCircleDown
             className="name-title_scroll-icon "
-            size={40}
-            onClick={() => scrollToBottom()}
+            size={20}
+            onClick={() => scrollToRef()}
           />
-        </div>
+        </motion.div>
       </div>
       {/* </FadeInOnScroll> */}
     </header>
