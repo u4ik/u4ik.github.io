@@ -48,22 +48,9 @@ const Header = ({ aboutRef }: HeaderProps) => {
     requestAnimationFrame(step);
   }
 
-  // this should be run only once per application lifetime
-  useEffect(() => {
-    initParticlesEngine(async (engine) => {
-      // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
-      // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
-      // starting from v2 you can add only the features you need reducing the bundle size
-      //await loadAll(engine);
-      //await loadFull(engine);
-      await loadSlim(engine);
-      //await loadBasic(engine);
-    }).then(() => {
-      setInit(true);
-    });
-  }, []);
+  // Particle engine initialization moved to App.tsx
   const particlesLoaded = async (container: any) => {
-    console.log(container);
+    // console.log(container);
   };
 
   const options = {
@@ -74,17 +61,10 @@ const Header = ({ aboutRef }: HeaderProps) => {
       cover: {
         color: {
           value: "#000000",
-          // value: "#ffffff",
         },
-        opacity: 0.7, // Adjust this value to control the darkness of the background
+        opacity: 0.9, 
       },
     },
-    // background: {
-    //   color: {
-    //     // img: `url(${Background})`,
-    //     value:"#000000"
-    //   },
-    // },
     particles: {
       number: {
         value: 80,
@@ -185,8 +165,6 @@ const Header = ({ aboutRef }: HeaderProps) => {
         particlesLoaded={particlesLoaded}
         options={options}
         style={{
-          // This is the key CSS to add.
-          // It will blend the particles canvas with the background image of the header.
           mixBlendMode: "screen",
         }}
       />

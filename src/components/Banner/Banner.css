@@ -24,6 +24,7 @@ section {
   gap: 2em;
   animation: swipe var(--speed) linear infinite backwards;
   padding-right: 2em; 
+  user-select: none;
 }
 
 @keyframes swipe {

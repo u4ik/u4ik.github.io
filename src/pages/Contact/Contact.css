@@ -1,16 +1,16 @@
 .contact-container {
     background: rgba(255, 255, 255, 0.6);
     color: black;
-    position: absolute;
-    top: 55%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: auto;
+    display: flex;
+    position: relative;
+    justify-content: center;
     min-width: 350px;
     max-width: 350px;
     max-height: 35em;
-    width: auto;
+    margin-inline: auto;
+    margin-top: 1em;
     padding: 2em;
+    margin-bottom: 2em;
     border-radius: 1em;
     display: flex;
     flex-direction: column;

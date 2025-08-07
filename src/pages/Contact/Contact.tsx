@@ -36,10 +36,18 @@ const Contact = () => {
 
   return (
     <FadeInOnScroll>
-      <Globe location={location} />
+      <div
+        style={{
+          backgroundColor: "",
+          height: "100dvh",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Globe location={location} />
 
- 
-      {currentLocationTemp && (
+        {/* {currentLocationTemp && ( */}
         <motion.div
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -50,70 +58,71 @@ const Contact = () => {
             duration: 0.5,
             delay: 1,
           }}
-          className="absolute flex justify-center items-center h-5 p-5 bg-black bg-opacity-10 top-[35dvh] left-1/2 -translate-x-1/2 rounded-sm"
+          className="z-20 mt-[27dvh] max-w-fit border-red-100 border-solid border-1 relative flex justify-center items-center h-5 p-5 bg-black bg-opacity-10  mx-auto rounded-sm "
         >
           <h1 className="text-white text-xs">
             How's the weather in {location?.city}, {location?.region}?{" "}
             {currentLocationTemp ? currentLocationTemp + "°F" : "Loading..."}
           </h1>
         </motion.div>
-      )}
-      <div className="contact-container bg-opacity-10 backdrop-blur-sm mt-20">
-        {state.succeeded ? (
-          <h3>
-            Thanks for your message! <br />
-            You can rotate the globe by the way :)
-          </h3>
-        ) : (
-          <>
-            <motion.form
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                type: "spring",
-                stiffness: 120,
-                damping: 12,
-                duration: 0.5,
-              }}
-              viewport={{ once: false, amount: 0.3 }}
-              className="contact-form"
-              onSubmit={handleSubmit}
-            >
-              <label htmlFor="email">Email Address:</label>
-              <input
-                className="contact-input"
-                id="email"
-                type="email"
-                name="email"
-                required
-              />
-              <ValidationError
-                prefix="Email"
-                field="email"
-                errors={state.errors}
-              />
-              <label htmlFor="message">Message:</label>
-              <textarea
-                className="contact-text"
-                id="message"
-                name="message"
-                required
-              />
-              <ValidationError
-                prefix="Message"
-                field="message"
-                errors={state.errors}
-              />
-              <button
-                type="submit"
-                className="btn btn-primary"
-                disabled={state.submitting}
+        {/* )}  */}
+        <div className="contact-container bg-opacity-10 backdrop-blur-sm ">
+          {state.succeeded ? (
+            <h3>
+              Thanks for your message! <br />
+              You can rotate the globe by the way :)
+            </h3>
+          ) : (
+            <>
+              <motion.form
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 120,
+                  damping: 12,
+                  duration: 0.5,
+                }}
+                viewport={{ once: false, amount: 0.3 }}
+                className="contact-form"
+                onSubmit={handleSubmit}
               >
-                Submit
-              </button>
-            </motion.form>
-          </>
-        )}
+                <label htmlFor="email">Email Address:</label>
+                <input
+                  className="contact-input"
+                  id="email"
+                  type="email"
+                  name="email"
+                  required
+                />
+                <ValidationError
+                  prefix="Email"
+                  field="email"
+                  errors={state.errors}
+                />
+                <label htmlFor="message">Message:</label>
+                <textarea
+                  className="contact-text"
+                  id="message"
+                  name="message"
+                  required
+                />
+                <ValidationError
+                  prefix="Message"
+                  field="message"
+                  errors={state.errors}
+                />
+                <button
+                  type="submit"
+                  className="btn btn-primary"
+                  disabled={state.submitting}
+                >
+                  Submit
+                </button>
+              </motion.form>
+            </>
+          )}
+        </div>
       </div>
     </FadeInOnScroll>
   );

@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { initParticlesEngine } from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
 import { useState, lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Home, Projects, Resume } from "./pages";
@@ -7,15 +10,11 @@ const Contact = lazy(() => import("./pages/Contact/Contact"));
 import "./App.css";
 
 function App() {
-  // const [darkMode, setDarkMode] = useState(false);
-
-  // useEffect(() => {
-  //   if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-  //     setDarkMode(true);
-  //   } else {
-  //     setDarkMode(false);
-  //   }
-  // }, []);
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine);
+    });
+  }, []);
 
   return (
     <div className="App" 

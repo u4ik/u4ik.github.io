@@ -116,7 +116,7 @@ export default function Globe({ location }: GlobeProps) {
 
   return (
     <Canvas
-      style={{ width: "100vw", height: "100dvh" }}
+      style={{ width: "100vw", minHeight: "100dvh", position: "absolute", top: 0, left: 0 }}
       // camera={{ position: [0, 0, 0], fov: 90 }} // <--- move camera closer (z=2.5 or even 2)
       // camera={{ position: [0, 2, 5.5], fov: 40 }} // <--- move camera closer (z=2.5 or even 2)
       //  camera={{ position: [0, 3, 5.5], fov: 40 }} //
