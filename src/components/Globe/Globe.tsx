@@ -1,4 +1,21 @@
-import { Canvas, useFrame } from "@react-three/fiber";
+// Smoothly zooms the camera to a target position on mount
+import { useFrame } from "@react-three/fiber";
+function ZoomCamera({ cameraRef, setZooming }: { cameraRef: React.RefObject<THREE.Camera | null>, setZooming: (v: boolean) => void }) {
+  useFrame(() => {
+    if (!cameraRef.current) return;
+    const targetZ = 5.5;
+    const speed = 0.08;
+    if (cameraRef.current.position.z > targetZ) {
+      cameraRef.current.position.z -= speed;
+      if (cameraRef.current.position.z <= targetZ) {
+        cameraRef.current.position.z = targetZ;
+        setZooming(false);
+      }
+    }
+  });
+  return null;
+}
+import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Stars, Text } from "@react-three/drei";
 import * as THREE from "three";
 import { useLoader } from "@react-three/fiber";
@@ -31,6 +48,8 @@ interface GlobeProps {
   location: { lat: number; lon: number } | null | LocationType;
 }
 export default function Globe({ location }: GlobeProps) {
+  const cameraRef = useRef<THREE.Camera | null>(null);
+  const [zooming, setZooming] = useState(true);
   const [pinPosition, setPinPosition] = useState([0, 0, 0]);
 
   const texture = useLoader(TextureLoader, EarthTexture);
@@ -111,17 +130,41 @@ export default function Globe({ location }: GlobeProps) {
     }
   }, [location]);
 
+function ZoomCamera({ cameraRef, setZooming }: { cameraRef: React.RefObject<THREE.PerspectiveCamera>, setZooming: (v: boolean) => void }) {
+  useFrame(() => {
+    if (!cameraRef.current) return;
+    const targetZ = 3.7;
+    const targetY = 3.7;
+    const speed = 0.02;
 
+
+    if (cameraRef.current.position.z > targetZ) {
+      cameraRef.current.position.z -= speed;
+      if (cameraRef.current.position.z <= targetZ) {
+        cameraRef.current.position.z = targetZ;
+        setZooming(false);
+      }
+    }
+
+  });
+  return null;
+}
   
 
   return (
     <Canvas
       style={{ width: "100vw", minHeight: "100dvh", position: "absolute", top: 0, left: 0 }}
-      // camera={{ position: [0, 0, 0], fov: 90 }} // <--- move camera closer (z=2.5 or even 2)
-      // camera={{ position: [0, 2, 5.5], fov: 40 }} // <--- move camera closer (z=2.5 or even 2)
-      //  camera={{ position: [0, 3, 5.5], fov: 40 }} //
+      camera={{ position: [0, 0, 10], fov: 75, near: 0.1, far: 1000 }}
+      onCreated={({ camera }) => {
+        cameraRef.current = camera;
+      }}
     >
+      {/* Camera zoom-in effect */}
+      {zooming && <ZoomCamera cameraRef={cameraRef} setZooming={setZooming} />}
+
+
       <ambientLight intensity={0.2} />
+
       <AnimatedLight />
       <mesh position={[0, 1.9, 0]}>
         <sphereGeometry args={[1, 64, 64]} />
@@ -154,14 +197,12 @@ export default function Globe({ location }: GlobeProps) {
       >
         Your Location
       </Text>
-      <OrbitControls
-        enableZoom={false}
+      <OrbitControls enableZoom={false}
         // minDistance={4.5}
         // maxDistance={5}
         autoRotate
         autoRotateSpeed={0.2}
-        minPolarAngle={Math.atan2(5, 4)}
-        maxPolarAngle={Math.atan2(5, 4)}
+        minPolarAngle={Math.atan2(5, 4)} maxPolarAngle={Math.atan2(5, 4)}
       />
       <Stars speed={1} />
     </Canvas>
