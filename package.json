@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist --repo https://github.com/u4ik/u4ik.github.io.git"
   },
   "dependencies": {
     "@formspree/react": "^3.0.0",
