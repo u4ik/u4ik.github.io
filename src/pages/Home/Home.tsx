@@ -43,8 +43,8 @@ const Home = () => {
       <Banner  speed={40000} />
       </FadeInOnScroll>
       <About ref={aboutRef} />
-
-      <Education />
+         <div className="h-50"></div>
+      {/* <Education /> */}
     </>
   );
 };

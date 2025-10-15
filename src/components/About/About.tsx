@@ -64,7 +64,7 @@ const About = forwardRef<HTMLDivElement>((props, ref) => {
               digital experiences. I love solving problems, paying attention to
               the small details, and creating solutions that work seamlessly
               across different systems. I mostly work with JavaScript, Python,
-              and C#, which gives me the flexibility to take on a variety of
+              and C#, including various libraries and frameworks which give me the flexibility to take on a variety of
               challenges. When I'm not coding, you'll probably find me
               aquascaping, out on a hike, lost in a good video game, or relaxing
               with a great book. Those things help keep me grounded and spark
