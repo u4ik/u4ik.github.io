@@ -1,0 +1,48 @@
+const tileTexts = [
+  "HTML",
+  "CSS",
+  "JavaScript",
+  "SQL",
+  "C#",
+  "MongoDB",
+  "ExpressJS",
+  "React",
+  "TypeScript",
+  "NodeJS",
+  "REST API",
+  "Tailwind CSS",
+  "Next.js",
+  "Recoil",
+  "DaisyUI",
+  "Motion",
+  "Framer Motion",
+  "Three.js",
+  "React Three Fiber",
+  "Prisma",
+  "Storybook",
+  "pgAdmin",
+  "PostgreSQL",
+  "Sequelize",
+  "Firebase",
+  "Docker",
+  "Render",
+  "Heroku",
+  "Vercel",
+  "Netlify",
+  "AWS",
+  "S3",
+  "Cloudinary",
+  "Git",
+  "GitHub",
+  "NPM",
+  "Postman",
+  "Jest",
+  "Vitest",
+];
+
+const tiles = tileTexts.map((tileText, idx) => ({
+  id: idx + 1, // unique id for each tile
+  tileText,
+}));
+
+export default tiles;

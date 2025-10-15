@@ -22,13 +22,6 @@ const Header = ({ aboutRef }: HeaderProps) => {
   });
 
 
-  // const scrollToBottom = () => {
-  //   aboutRef.current?.scrollIntoView({
-  //     block: "end",
-  //     behavior: "smooth",
-  //   });
-  // };
-
   function scrollToRef(duration = 900) {
     if (!aboutRef.current) return;
     const targetY = aboutRef.current.getBoundingClientRect().top + window.scrollY;

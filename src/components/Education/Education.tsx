@@ -29,7 +29,7 @@ const Education = () => {
 
   const educationList = [
     {
-      institution: "Eleven Fifty Academy",
+      institution: "Blaizing Academy",
       attendance: "2020",
       study: "Web Development Bootcamp",
       merits: "Full-Stack Development Certificate",
@@ -71,13 +71,12 @@ const Education = () => {
               />
             </div>
             <p style={{ fontSize: "1.2em" }}>
-              Despite challenges (financial & health) that prevented me from completing my university
-              degree, my commitment to academic and professional growth never
+              My commitment to academic and professional growth never
               wavered. During my time at the International Academy of Design &
-              Technology (2013) and Indiana University - Purdue University
+              Technology (2013),  and Indiana University - Purdue University
               Indianapolis (2015), I maintained a high academic caliber, earning
               honors like the President's and Dean's Lists. This dedication
-              ultimately culminated in my success at the Eleven Fifty Academy
+              ultimately culminated in my success at the Blaizing Academy
               Web Development Bootcamp in 2020, where I graduated at the top of
               my class and secured a job in the industry. My journey
               demonstrates a powerful work ethic and a relentless pursuit of
