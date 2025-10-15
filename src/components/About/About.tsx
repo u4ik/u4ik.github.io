@@ -59,17 +59,17 @@ const About = forwardRef<HTMLDivElement>((props, ref) => {
             </div>
 
             <p style={{ fontSize: "1.2em" }}>
-              Hi, I’m <span className="gradient-mask">Amit</span>, and thanks for stopping by! :) <br/> I’m a programmer and
-              technologist who’s passionate about building clean, intuitive
+              Hi, I'm <span className="gradient-mask">Amit</span>, and thanks for stopping by! :) <br/> I'm a programmer and
+              technologist who's passionate about building clean, intuitive
               digital experiences. I love solving problems, paying attention to
               the small details, and creating solutions that work seamlessly
               across different systems. I mostly work with JavaScript, Python,
               and C#, which gives me the flexibility to take on a variety of
-              challenges. When I’m not coding, you’ll probably find me
+              challenges. When I'm not coding, you'll probably find me
               aquascaping, out on a hike, lost in a good video game, or relaxing
               with a great book. Those things help keep me grounded and spark
               creativity in unexpected ways. Feel free to check out my projects,
-              and if you’ve got an idea you’d like to bring to life, I’d love to
+              and if you've got an idea you'd like to bring to life, I'd love to
               connect.
             </p>
           </FadeInOnScroll>
